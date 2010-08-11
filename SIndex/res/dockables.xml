@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE DOCKABLES SYSTEM "dockables.dtd">
+
+<!-- jswatplugin.JSwatDockable dockable window -->
+
+<DOCKABLES>
+  <DOCKABLE NAME="SIndex">
+   new sindex.SIndexDockable( view )
+  </DOCKABLE>
+</DOCKABLES>

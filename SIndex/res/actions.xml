@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE ACTIONS SYSTEM "actions.dtd">
+
+<ACTIONS>
+	<ACTION NAME="sindex-open">
+		<CODE>
+			view.getDockableWindowManager()
+				.toggleDockableWindow("sindex");
+		</CODE>
+		<IS_SELECTED>
+			return view.getDockableWindowManager()
+				.isDockableWindowVisible("sindex");
+		</IS_SELECTED>
+	</ACTION>
+
+	<ACTION NAME="sindex-options">
+		<CODE>
+			new sindex.ConfigureDialog(view);
+		</CODE>
+	</ACTION>
+
+	<ACTION NAME="sindex-open-sel">
+		<CODE>
+			String sel = textArea.getSelectedText();
+			if (sel == null || sel.length() == 0) {
+				textArea.selectWord();
+				sel = textArea.getSelectedText();
+				if (sel == null || sel.length() == 0) {
+					view.getToolkit().beep();
+					return;
+				}
+			}
+			sindex.SIndexPlugin.lookup(view, sel);
+		</CODE>
+	</ACTION>
+
+</ACTIONS>

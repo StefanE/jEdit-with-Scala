@@ -1,0 +1,255 @@
+#
+# Plugin properties
+#
+
+plugin.sindex.SIndexPlugin.name=SIndex
+plugin.sindex.SIndexPlugin.title=SIndex
+plugin.sindex.SIndexPlugin.author=Stefan Ettrup (Code modified from Dirk Moebius)
+plugin.sindex.SIndexPlugin.version=0.1
+plugin.sindex.SIndexPlugin.docs=index.html
+
+plugin.sindex.SIndexPlugin.depend.0=jdk 1.3
+plugin.sindex.SIndexPlugin.depend.1=jedit 04.01.01.00
+plugin.sindex.SIndexPlugin.depend.2=plugin infoviewer.InfoViewerPlugin 1.0
+
+
+#
+# Dockable
+#
+
+plugin.SIndexPlugin.title=SIndex
+
+
+#
+# Menu properties
+#
+
+sindex-menu=sindex-open sindex-open-sel - sindex-options
+sindex-menu.label=SIndex
+sindex-open.label=SIndex
+sindex-open-sel.label=SIndex on current word
+sindex-options.label=SIndex Configuration
+
+
+#
+# Default properties
+#
+
+
+#
+# Option pane properties
+#
+
+options.sindex.label=SIndex
+options.sindex.fastDisplay=Don't show select dialog, if word is unique
+options.sindex.createIndex=Create/Update Index...
+options.sindex.table.label=List of libraries
+options.sindex.table.col0=Library
+options.sindex.table.col1=Documentation URL
+options.sindex.table.col2=Is Old JavaDoc
+options.sindex.table.col3=Include
+options.sindex.table.public=Public only
+options.sindex.table.protected=Public/Protected
+options.sindex.table.package=Public/Protected/Package
+options.sindex.table.private=All
+options.sindex.addLibEntry=Add
+options.sindex.addLibEntry.title=Please choose a JAR or ZIP file
+options.sindex.addLibEntry.filefilter=JAR and ZIP files
+options.sindex.delLibEntry=Remove
+options.sindex.ok=Ok
+options.sindex.cancel=Cancel
+options.sindex.recreate=Recreate
+options.sindex.inputDoc.title=Please enter a documentation URL
+options.sindex.inputDoc.message=\
+        Please enter the URL, where the documentation for the\n\
+        library is located. This may be a "file:", "http:" or\n\
+        any other URL type.\n\
+        \n\
+        You can leave this as it is and input the URL later.\n\
+        \n\
+        If you press cancel now, the entry will not be created.\n
+
+
+#
+# Errors
+#
+
+options.sindex.error.noselection.title=No selection
+options.sindex.error.noselection.message=Please select one or more rows to delete.
+
+options.sindex.error.nolibs.title=Please enter libraries
+options.sindex.error.nolibs.message=\
+        Please enter at least one library\n\
+        together with a documentation URL.
+
+options.sindex.error.libexists.title=Duplicate Library
+options.sindex.error.libexists.message=This library file is already in the list.
+
+options.sindex.error.libmissing.title=No library name
+options.sindex.error.libmissing.message=The library name in row {0} is empty.
+
+options.sindex.error.libwrong.title=Not a library
+options.sindex.error.libwrong.message=\
+        The library "{0}"\n\
+        in row {1} does not denote a valid ZIP or JAR file.\n\
+        \n\
+        Please delete this entry and add a correct one.
+
+options.sindex.error.docmissing.title=No documentation URL
+options.sindex.error.docmissing.message=Documentation URL in row {0} is empty.
+
+options.sindex.error.docwrong.title=Wrong documentation URL
+options.sindex.error.docwrong.message=\
+        The documentation URL\n\
+        "{0}"\n\
+        in row {1} is not a valid URL:\n\
+        \n\
+        {2}\n\
+        \n\
+        Maybe you forgot to prepend "file:", if it\n\
+        is a folder on your local file system?
+
+options.sindex.error.overwrite.title=Overwrite?
+options.sindex.error.overwrite.message=\
+        A new index has to be created,\n\
+        but an old index file exists in\n\
+        "{0}".\n\
+        \n\
+        Do you really want to overwrite this file\n\
+        and create a new index?
+
+sindex.error.noinfoviewer.title=No InfoViewer
+sindex.error.noinfoviewer.message=\
+    There is no plugin installed to view URLs.\n\
+    Please install InfoViewer or any other plugin\n\
+    for ViewURL messages.
+
+sindex.error.nohome.title=No directory for user settings
+sindex.error.nohome.message=\
+        The directory for user settings could not be found.\n\
+        This is probably because you specified "-nosettings" at startup.\n\
+        SIndex cannot be used then.
+
+sindex.error.load.title=Error loading index file
+sindex.error.load.message=\
+        An error occurred while loading the index file\n\
+        {0}.\n\
+        \n\
+        The complete error message was:\n\
+        {1}\n\
+        \n\
+        More information may be found in the activity log.
+
+sindex.error.invalidfile.title=Error loading index file
+sindex.error.invalidfile.message=\
+        An error occurred while loading the index file\n\
+        {0}.\n\
+        \n\
+        The XML parser could not parse the index file.\n\
+        The message was:\n\
+        {1}\n\
+        at line {2}, column {3}.\n\
+        \n\
+        The index file is problably damaged. Try to recreate\n\
+        the index.
+
+sindex.error.wrongversion.title=Index out of date
+sindex.error.wrongversion.message=\
+        SIndex tried to load an outdated index file.\n\
+        The detailled error message is:\n\
+        \n\
+        {1}\n\
+        \n\
+        Don't worry, you just have to recreate the index.\n\
+        In the following dialog, press "Recreate".
+
+sindex.error.outofmemory.title=Error loading/creating index file
+sindex.error.outofmemory.message=\
+        An out-of-memory error occurred while {0} the index file.\n\
+        \n\
+        You need to increase the maximum memory size of\n\
+        the Java virtual machine. Try setting the option\n\
+        "{1}" in the command line that starts jEdit.\n\
+        \n\
+        Note: <size> is the amount of memory you want to reserve\n\
+        for the Java virtual machine in megabytes. The default\n\
+        is 32. You may want to increase it to 64 or higher.\n\
+        \n\
+        More information about this option can be found in the\n\
+        documentation of the Java virtual machine.
+
+sindex.error.docwrong.title=Malformed URL
+sindex.error.docwrong.message=\
+        The documentation URL\n\
+        "{0}"\n\
+        is no valid URL:\n\
+        \n\
+        {1}
+
+sindex.error.write.title=Error writing index file
+sindex.error.write.message=\
+        Error writing index file\n\
+        "{0}":\n\
+        {1}
+
+
+#
+# The SIndex frame
+#
+
+sindex.frame.title=SIndex
+sindex.frame.search.label=Search:
+sindex.frame.search.mnemonic=S
+sindex.frame.index.label=Index:
+sindex.frame.index.mnemonic=n
+sindex.frame.topics.label=Topics found:
+sindex.frame.topics.mnemonic=T
+
+sindex.frame.status.label=SIndex (c) 1999-2001 by Dirk Moebius
+sindex.frame.status.notloaded=The index is not loaded yet.
+sindex.frame.status.loading=Loading index file. Please wait...
+sindex.frame.status.ready=Ready.
+sindex.frame.status.error=Error loading index file
+sindex.frame.status.keywordnotfound=Nothing found on {0}
+sindex.frame.status.countEntries={0,choice,0#Nothing|1#One entry|2#{0} entries} found on {1}
+sindex.frame.status.open=Opening {0} ...
+
+
+#
+# The SIndex chooser
+#
+
+sindex.chooser.title=SIndex: {0}
+sindex.chooser.info=[Up]/[Down] Choose    [Enter] Select    [Esc] Close
+
+
+#
+# misc
+#
+
+sindex.createinfo.title=No index file
+sindex.createinfo.message=\
+        Before the first use of SIndex\n\
+        you have to create a search index\n\
+        for your API documentation.\n\
+        Please enter the list of APIs\n\
+        and documentation URLs in the\n\
+        following dialog.
+
+sindex.backgroundinfo.title=Information
+sindex.backgroundinfo.message=\
+        The new index will be created in the background.\n\
+        You can continue to work with jEdit. The new index\n\
+        will show up automatically when it's ready.\n\
+        \n\
+        You can watch the status of the index creation\n\
+        by the I/O Progress Monitor, or by the little icon\n\
+        displayed in the right area of the menubar.\n\
+        \n
+sindex.backgroundinfo.dontShowAgain=Don\'t show this message again.
+
+sindex.createIsRunning.title=Creating Index...
+sindex.createIsRunning.message=\
+        Another index is created currently.\n\
+        Please wait till this process is finished.
+
