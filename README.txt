@@ -1,3 +1,3 @@
 README
 
-This repository is planned to contain code to a number of different jEdit plugins. All the plugins will focus on creating a better environment for Scala developers.
+This repository will contain code to the so called SIndex plugin to jEdit. It is based on the JIndex plugin, but rewritten entirely to Scala partly manual partly by machine. 
