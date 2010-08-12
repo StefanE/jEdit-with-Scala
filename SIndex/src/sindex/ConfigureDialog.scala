@@ -309,8 +309,8 @@ class ConfigureDialog(parent: Frame)
         case 3 => jEdit.getProperty("options.sindex.table.col3")
       }
 
-    //TODO: In java you can cast as Boolean??
-    override def getColumnClass(index: Int): Class[_] = if (index == 2) classOf[String] else classOf[String]
+    //TODO: Diff between getClass and classOf
+    override def getColumnClass(index: Int): Class[_] = if (index == 2) Boolean.getClass else classOf[String]
 
     def save: Unit = {
       var count: Int = 0
