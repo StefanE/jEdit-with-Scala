@@ -89,10 +89,12 @@ class SIndex {
     // estimate for the number of classes to process).
     var numFiles: Int = 0
     var i = 0
+    println(libs.length)
     while (i < libs.length) {
       var f: ZipFile = libs(i).getLibFile
-      numFiles += SIndexUtilities.zipFileSize(f)
-      i += i
+      numFiles += f.size
+      println(i)
+      i += 1
     }
     var allNames: Hashtable[AnyRef, AnyRef] = new Hashtable[AnyRef, AnyRef](numFiles * 10)
     setNumIterations(numFiles + 3)
@@ -282,16 +284,28 @@ class SIndex {
     var sourceName: String = SIndexUtilities.scalaNamesConverter(fullName)
     sourceName = sourceName.replace("$", "")
     shortName = SIndexUtilities.scalaNamesConverter(shortName)
-    var eOld: IndexEntry = allNamesLocal.get(shortName).asInstanceOf[IndexEntry]
+    var endPos: Int = shortName.length - 1
+    var filtered: String = if ((shortName.lastIndexOf("$") == endPos)) shortName.substring(0, endPos) else shortName
+    var eOld: IndexEntry = allNamesLocal.get(filtered).asInstanceOf[IndexEntry]
     var eNew: IndexEntry = new IndexEntry(indexType, fullName, sourceName, currentLibNum)
+    if (qualifiedName.contains("scala.actors.TIMEOUT$") || qualifiedName.contains("scala.concurrent.TIMEOUT$"))
+      {
+        println(eOld)
+        println("WOOT" + qualifiedName)
+        println(shortName)
+      }
+
     if (eOld == null) {
-      var endPos: Int = shortName.length - 1
-      var filtered: String = if ((shortName.lastIndexOf("$") == endPos)) shortName.substring(0, endPos) else shortName
+
+
       allNamesLocal.put(filtered.asInstanceOf[AnyRef], eNew.asInstanceOf[AnyRef])
     }
     else {
       eNew.next = eOld.next
       eOld.next = eNew
+    }
+    if (qualifiedName.contains("scala.actors.TIMEOUT$") || qualifiedName.contains("scala.concurrent.TIMEOUT$")) {
+      println("Get TIMEOUT:" + allNamesLocal.get("timeout").toString)
     }
   }
 
@@ -308,11 +322,11 @@ class SIndex {
       try {
         var file: File = new File(urlPath.replace("file:/", ""))
         System.out.println("CANREAD:" + urlPath + ":" + file.canRead)
-        if (!file.canRead) return
+        if (!file.canRead) return ()
       }
       catch {
         case e: Exception => {
-          return
+          return ()
         }
       }
       var indexType: Int = IndexEntry.CLAZZ
